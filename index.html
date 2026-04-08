@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Quỳnh</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <header>
+      <nav class="navbar">
+        <h2 class="logo">My Portfolio</h2>
+        <ul class="menu">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#project">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <h1>Tổng hợp các dự án đã nghiên cứu và làm ra</h1>
+      <p>Lưu lại đam mê lập trình và sáng tạo công nghệ</p>
+      <a href="#project" class="btn">Xem dự án</a>
+    </section>
+
+    <!-- ===== PROJECT CHÍNH ===== -->
+    <section id="project" class="container">
+      <h2>Dự án chính</h2>
+
+      <div class="project-list">
+        <!-- Máy vẽ -->
+        <div class="project">
+          <h3>✏️ Máy vẽ 2D</h3>
+          <img src="mayve2d.jpg" class="project-img" />
+
+          <p>
+            <strong>Mô tả:</strong> Máy vẽ 2D vẽ theo từng nét, có cơ cấu nâng
+            hạ bút.
+          </p>
+
+          <p>
+            <strong>Cấu trúc:</strong> Trục X, Y điều khiển mặt phẳng, trục Z
+            dùng servo nâng hạ bút.
+          </p>
+
+          <p><strong>Công nghệ:</strong></p>
+          <ul>
+            <li>Firmware: GRBL</li>
+            <li>PlatformIO</li>
+            <li>LaserGRBL / LightBurn</li>
+          </ul>
+
+          <p><strong>Ngôn ngữ:</strong> C</p>
+
+          <p><strong>Quy trình:</strong> Thiết kế → G-code → Vẽ</p>
+
+          <p><strong>Kết quả:</strong> Vẽ được hình cơ bản và PCB đơn giản</p>
+
+          <div class="project-buttons">
+            <a
+              href="https://www.youtube.com/watch?v=DZ5iUudF7Iw"
+              target="_blank"
+              class="btn"
+              >🎬 Demo</a
+            >
+            <a href="#" class="btn btn-dark">💻 GitHub</a>
+          </div>
+        </div>
+
+        <!-- Máy in 3D -->
+        <div class="project">
+          <h3>🖨️ Máy in 3D</h3>
+          <img src="mayin3d.jpg" class="project-img" />
+
+          <p>
+            <strong>Mô tả:</strong> Máy in 3D công nghệ FDM in từng lớp nhựa.
+          </p>
+
+          <p>
+            <strong>Cấu trúc:</strong> Trục X, Y đơn và trục Z đôi, khung in 3D.
+          </p>
+
+          <p><strong>Công nghệ:</strong></p>
+          <ul>
+            <li>Firmware: Marlin</li>
+            <li>PlatformIO</li>
+            <li>Ultimaker Cura</li>
+          </ul>
+
+          <p><strong>Ngôn ngữ:</strong> C</p>
+
+          <p><strong>Quy trình:</strong> Thiết kế → Cura → G-code → In</p>
+
+          <p><strong>Kết quả:</strong> In chi tiết nhỏ phục vụ dự án</p>
+
+          <div class="project-buttons">
+            <a
+              href="https://www.youtube.com/watch?v=kptchSGZKFI&list=PLsledda3noQcUnZLOPjA7OD45jkPmIFAl"
+              target="_blank"
+              class="btn"
+              >🎬 Demo</a
+            >
+            <a href="#" class="btn btn-dark">💻 GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECT NHỎ ===== -->
+    <section class="container">
+      <h2>Dự án nhỏ</h2>
+
+      <div class="project-list">
+        <!-- ESP32 CAR -->
+        <div class="project">
+          <h3>🤖 ESP32 Camera Car</h3>
+          <img src="esp32car.jpg" class="project-img" />
+          <p>
+            Xe điều khiển từ xa sử dụng ESP32-CAM, có khả năng truyền hình ảnh
+            trực tiếp qua WiFi.
+          </p>
+
+          <ul>
+            <li>Điều khiển qua điện thoại</li>
+            <li>Truyền video realtime</li>
+            <li>Kết nối WiFi</li>
+          </ul>
+        </div>
+
+        <!-- LED CUBE -->
+        <div class="project">
+          <h3>💡 LED Cube 4x4x4</h3>
+          <img src="ledcube.jpg" class="project-img" />
+          <p>
+            Mạch LED 3D hiển thị hiệu ứng ánh sáng lập trình bằng vi điều khiển.
+          </p>
+        </div>
+
+        <!-- ROBOT ARM -->
+        <div class="project">
+          <h3>🦾 Robot Arm Car</h3>
+          <img src="robotcar.jpg" class="project-img" />
+          <p>
+            Xe điều khiển tích hợp cánh tay robot, có thể gắp và di chuyển vật.
+          </p>
+          <ul>
+            <li>Điều khiển từ xa</li>
+            <li>Tay robot nhiều bậc tự do</li>
+            <li>Ứng dụng học tập và nghiên cứu</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact">
+      <h2>Liên hệ</h2>
+      <p>Email: truonngtrucquynh59@gmail.com</p>
+      <p>ĐT: 0763890239</p>
+    </section>
+  </body>
+</html>
