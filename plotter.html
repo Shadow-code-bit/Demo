@@ -20,9 +20,14 @@
       <h1>Máy vẽ kỹ thuật</h1>
       <p>Plotter 2D sử dụng Arduino</p>
     </section>
-    <section id="project" class="container">
-      <!-- ===== NGUYÊN LÝ ===== -->
-      <div class="project-list">
+    <!--
+      <section id="project" class="container">
+        <div class="project-list"> 
+        --->
+    <section class="container">
+      <div class="project-list small">
+        <!-- ===== NGUYÊN LÝ ===== -->
+
         <div class="project">
           <h2>⚙️ Nguyên lý hoạt động</h2>
           <img src="Photo/mayve1.jpg" class="project-img" />
@@ -46,18 +51,19 @@
         <div class="project">
           <h2>📐 G-code</h2>
           <img src="Photo/mayve2.jpg" class="project-img" />
-
           <p>G-code là ngôn ngữ điều khiển máy CNC và hệ thống tự động.</p>
-
           <ul>
             <li>Xác định vị trí (X, Y, Z)</li>
             <li>Điều chỉnh tốc độ (Feedrate)</li>
             <li>Điều khiển thiết bị (M3, M5...)</li>
           </ul>
-
           <p class="note">📌 Kết nối giữa phần mềm thiết kế và máy thực.</p>
         </div>
+      </div>
+    </section>
 
+    <section class="container">
+      <div class="project-list small">
         <!-- ===== STEP ===== -->
         <div class="project">
           <h2>⚡ Nguyên lý chia Step</h2>
@@ -78,7 +84,6 @@
             <p>Ta có: 50 x 80 = 4000 Step</p>
             <p>Vây động cơ cần di chuyển 4000 bước để di chuyển được 50mm</p>
           </ul>
-
           <p><strong>Ý nghĩa:</strong></p>
           <p>Di chuyển đúng khoảng cách</p>
           <p>Tăng độ chính xác</p>
@@ -86,6 +91,19 @@
           <p>Vẽ sai kích thước</p>
           <p>Rung, giật</p>
           <p>Nét không mượt</p>
+        </div>
+        <!-- ===== Sơ đồ kết nối dây ===== -->
+        <div class="project">
+          <h2>Sơ đồ đi dây mạch</h2>
+          <img src="Photo/mayve4.jpg" class="project-img" />
+          <ul>
+            <strong>Chi tiết linh kiện</strong>
+            <li>Mạch Arduino UNO</li>
+            <li>Mạch CNC Shield v3</li>
+            <li>Driver a4988 hoặc drv8825</li>
+            <li>2 động cơ stepper</li>
+            <li>Động cơ servo</li>
+          </ul>
         </div>
       </div>
     </section>
