@@ -12,6 +12,7 @@
     <header>
       <nav class="navbar">
         <h2 class="logo">My Project</h2>
+
         <ul class="menu">
           <li><a href="#">Trang chủ</a></li>
           <li><a href="#project">Dự án</a></li>
@@ -29,28 +30,28 @@
 
     <!-- ===== PROJECT CHÍNH ===== -->
     <section id="project" class="container">
-      <h2>Dự án chính</h2>
+      <h2>🚀 Dự án chính</h2>
+
       <div class="project-list">
-        <!-- Máy vẽ 2D -->
+        <!-- ===== MÁY VẼ 2D ===== -->
         <div class="project">
           <h3>✏️ Máy vẽ 2D</h3>
           <img src="Photo/mayve2d.jpg" class="project-img" />
-          <p>
-            <strong>Mô tả:</strong> Máy vẽ 2D điều khiển bằng Arduino, có cơ cấu
-            nâng hạ bút.
-          </p>
-          <p>
-            <strong>Cấu trúc:</strong> Trục X, Y điều khiển mặt phẳng, trục Z
-            dùng servo.
-          </p>
+
+          <p><strong>Mô tả:</strong> Máy vẽ 2D điều khiển bằng Arduino.</p>
+
+          <p><strong>Cấu trúc:</strong> Trục X, Y + servo nâng hạ bút.</p>
+
           <p><strong>Công nghệ:</strong></p>
           <ul>
             <li>GRBL</li>
-            <li>PlatformIO / Arduino ide</li>
+            <li>PlatformIO / Arduino IDE</li>
             <li>LaserGRBL / LightBurn</li>
           </ul>
+
           <p><strong>Ngôn ngữ:</strong> C</p>
-          <p><strong>Kết quả:</strong> Vẽ hình cơ bản và PCB đơn giản</p>
+          <p><strong>Kết quả:</strong> Vẽ hình cơ bản + PCB đơn giản</p>
+
           <div class="project-buttons">
             <a
               href="https://www.youtube.com/watch?v=WgsTyhX311E&t=230s"
@@ -64,29 +65,28 @@
           </div>
         </div>
 
-        <!-- Máy vẽ 2D COREXY -->
+        <!-- ===== COREXY ===== -->
         <div class="project">
-          <h3>✏️ Máy vẽ 2D COREXY</h3>
+          <h3>✏️ Máy vẽ COREXY</h3>
           <img src="Photo/mayve2dv2.jpg" class="project-img" />
+
+          <p><strong>Mô tả:</strong> Máy vẽ cải tiến với cơ cấu CoreXY.</p>
+
           <p>
-            <strong>Mô tả:</strong> Máy vẽ 2D điều khiển bằng Arduino, có cơ cấu
-            nâng hạ bút.
+            <strong>Cấu trúc:</strong> Dây đai chéo → chuyển động mượt và chính
+            xác.
           </p>
-          <p>
-            <strong>Cấu trúc:</strong> Trục X, Y chạy song song điều khiển mặt
-            phẳng bằng một dây đai duy nhát, trục Z dùng servo.
-          </p>
+
           <p><strong>Công nghệ:</strong></p>
           <ul>
-            <li>GRBL (nhưng phải bật chế độ crexy)</li>
-            <li>PlatformIO / Arduino ide</li>
-            <li>LaserGRBL / LightBurn</li>
+            <li>GRBL (CoreXY mode)</li>
+            <li>PlatformIO</li>
+            <li>LightBurn</li>
           </ul>
+
           <p><strong>Ngôn ngữ:</strong> C</p>
-          <p>
-            <strong>Kết quả:</strong> Vẽ hình cơ bản và PCB đơn giản, chi tiết
-            chuẩn xác ít lệch hơn so với máy kia
-          </p>
+          <p><strong>Kết quả:</strong> Vẽ chính xác hơn, ít sai lệch</p>
+
           <div class="project-buttons">
             <a
               href="https://www.youtube.com/watch?v=DZ5iUudF7Iw"
@@ -98,21 +98,23 @@
           </div>
         </div>
 
-        <!-- Máy in 3D -->
+        <!-- ===== MÁY IN 3D ===== -->
         <div class="project">
           <h3>🖨️ Máy in 3D</h3>
           <img src="Photo/mayin3d.jpg" class="project-img" />
-          <p>
-            <strong>Mô tả:</strong> Máy in 3D công nghệ FDM in từng lớp nhựa.
-          </p>
+
+          <p><strong>Mô tả:</strong> Máy in 3D công nghệ FDM.</p>
+
           <p><strong>Công nghệ:</strong></p>
           <ul>
             <li>Marlin</li>
             <li>PlatformIO</li>
             <li>Ultimaker Cura</li>
           </ul>
+
           <p><strong>Ngôn ngữ:</strong> C</p>
-          <p><strong>Kết quả:</strong> In chi tiết kỹ thuật nhỏ</p>
+          <p><strong>Kết quả:</strong> In chi tiết kỹ thuật</p>
+
           <div class="project-buttons">
             <a
               href="https://www.youtube.com/watch?v=kptchSGZKFI"
@@ -128,22 +130,22 @@
 
     <!-- ===== PROJECT NHỎ ===== -->
     <section class="container">
-      <h2>Dự án nhỏ</h2>
-      <div class="project-list">
-        <!-- Cánh tay robot-->
+      <h2>🧪 Dự án nhỏ</h2>
+
+      <div class="project-list small">
         <div class="project">
-          <h3>Cánh tay robot</h3>
-          <img src="Photo/arm4dof.jpg" class="project-img" />
+          <h3>🦾 Cánh tay robot</h3>
+          <img src="Photo/arm4dof.jpg" class="project-img small-img" />
           <p>Cánh tay hoạt động 4 bâc tự do</p>
           <ul>
             <li>Điều khiển bằng điện thoại hoặc chiếc áp</li>
             <li>Kết nối WiFi và trực tiếp</li>
           </ul>
         </div>
-        <!-- ESP32 -->
+
         <div class="project">
           <h3>🤖 ESP32 Camera Car</h3>
-          <img src="Photo/esp32car.jpg" class="project-img" />
+          <img src="Photo/esp32car.jpg" class="project-img small-img" />
           <p>Xe điều khiển có camera truyền hình ảnh qua WiFi.</p>
           <ul>
             <li>Điều khiển bằng điện thoại</li>
@@ -152,17 +154,15 @@
           </ul>
         </div>
 
-        <!-- LED Cube -->
         <div class="project">
-          <h3>💡 LED Cube 4x4x4</h3>
-          <img src="Photo/ledcube.jpg" class="project-img" />
+          <h3>💡 LED Cube</h3>
+          <img src="Photo/ledcube.jpg" class="project-img small-img" />
           <p>Mạch LED 3D hiển thị hiệu ứng ánh sáng.</p>
         </div>
 
-        <!-- Robot -->
         <div class="project">
-          <h3>🦾 Robot Arm Car</h3>
-          <img src="Photo/robotcar.jpg" class="project-img" />
+          <h3>🚗 Robot Arm Car</h3>
+          <img src="Photo/robotcar.jpg" class="project-img small-img" />
           <p>Xe điều khiển tích hợp tay gắp robot.</p>
           <ul>
             <li>Điều khiển từ xa</li>

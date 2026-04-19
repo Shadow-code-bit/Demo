@@ -24,19 +24,12 @@ body {
 .menu {
   display: flex;
   list-style: none;
-}
-
-.menu li {
-  margin-left: 20px;
+  gap: 20px;
 }
 
 .menu a {
   color: white;
   text-decoration: none;
-}
-
-.menu a:hover {
-  color: #00bcd4;
 }
 
 /* HERO */
@@ -47,28 +40,18 @@ body {
   color: white;
 }
 
-/* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: #2196f3;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #00bcd4;
   color: white;
   border-radius: 5px;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1976d2;
 }
 
 .btn-dark {
   background: #333;
-}
-
-.btn-dark:hover {
-  background: #000;
 }
 
 /* CONTAINER */
@@ -79,8 +62,13 @@ body {
 /* GRID */
 .project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+}
+
+/* SMALL GRID */
+.project-list.small {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 /* CARD */
@@ -93,28 +81,21 @@ body {
 }
 
 .project:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
 }
 
 /* IMAGE */
 .project-img {
-  width: 100%;
+  width: 80%;
   border-radius: 8px;
-  margin: 10px 0;
 }
 
-/* BUTTON GROUP */
+.small-img {
+   width: 50%;
+  border-radius: 8px;
+}
+
+/* BUTTON */
 .project-buttons {
   margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-
-/* CONTACT */
-.contact {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 30px;
 }
