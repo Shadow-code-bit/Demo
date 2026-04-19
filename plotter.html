@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-        <link rel="stylesheet" href="plotter.css" />
+    <title>Plotter 2D</title>
+    <link rel="stylesheet" href="plotter.css" />
   </head>
-      <!-- ===== NAVBAR ===== -->
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
     <header>
       <nav class="navbar">
         <h2 class="logo">My Project</h2>
@@ -16,69 +18,76 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <h1>Máy vẽ kỹ thuật</h1>
-      <p>Plotter 2D</p>
+      <p>Plotter 2D sử dụng Arduino</p>
     </section>
     <section id="project" class="container">
-      <h2>  Nguyên lý hoạt động</h2>
+      <!-- ===== NGUYÊN LÝ ===== -->
       <div class="project-list">
         <div class="project">
-            <img  src="Photo/mayve1.jpg" class="project-img"/> 
+          <h2>⚙️ Nguyên lý hoạt động</h2>
+          <img src="Photo/mayve1.jpg" class="project-img" />
+          <p>
+            Máy vẽ hoạt động dựa trên hệ tọa độ không gian 3 trục (X, Y, Z).
+          </p>
           <ul>
             <li>
-             Nguyên lý hoạt động của hệ thống máy vẽ mạch in điện tử (PCB Plotter)
-             dựa trên cơ chế điều khiển tọa độ không gian theo các trục X, Y và Z.
+              <strong>Trục X, Y:</strong> Điều khiển chuyển động ngang và dọc.
             </li>
+            <li><strong>Trục Z:</strong> Servo SG90 nâng/hạ bút.</li>
             <li>
-              Trục X và Y: Hai trục này điều khiển chuyển động ngang và dọc của bút
-             vẽ. Động cơ bước gắn trên các trục sẽ di chuyển bút vẽ theo đúng vị
-             trí tọa độ đã được chỉ định trong file G-code.
-            </li>
-            <li>
-             Trục Z: Trục Z đảm nhận việc nâng hạ bút vẽ, dùng động cơ servo sg90
-             gắn trên trục. Khi cần vẽ, bút sẽ được hạ xuống tiếp xúc với bề mặt
-             board đồng. Khi cần di chuyển sang vị trí khác mà không vẽ, bút sẽ
-             được nâng lên.
-            </li>
-            <li>
-             Bộ điều khiển trung tâm: Hệ thống sử dụng vi điều khiển như Arduino,
-             có nhiệm vụ đọc dữ liệu G-code, sau đó điều khiển tốc độ, hướng và
-             khoảng di chuyển của từng động cơ bước trên các trục X, Y, Z.
+              <strong>Điều khiển:</strong> Arduino đọc G-code và điều khiển động
+              cơ.
             </li>
           </ul>
-          </div>
-          </div>
-    </section>
-    <section id="project" class="container">
-      <h2> Khái niệm G-code</h2>
-      <div class="project-list">
-        <div class="project">
-            <img  src="Photo/mayve2.jpg" class="project-img"/> 
-              <ul>
-               <li>
-                 G-code (Geometric Code) là ngôn ngữ lập trình tiêu chuẩn dùng để điều khiển các máy CNC, máy in 3D, máy vẽ tự động và các thiết bị gia công điều khiển số.
-              </li>
-              <li>
-                Nó được phát triển để mô tả các chuyển động và thao tác máy một cách chính xác, giúp thực hiện quá trình gia công hoặc vẽ tự động.
-             </li>
-              <li>
-                Chức năng chính của G-code: Xác định tọa độ di chuyển của đầu công cụ (theo trục X, Y, Z), điều chỉnh tốc độ di chuyển (Feedrate – F), điều khiển các thiết bị phụ trợ như: Bật/tắt spindle, laser, servo (lệnh M3, M5),…
-              </li>
-            </ul>
-          </div>
+          <p class="note">📌 Bút di chuyển chính xác theo dữ liệu lập trình.</p>
         </div>
-    </section>
-     <section id="project" class="container">
-      <h2>Nguyên lý chia Step</h2>
-      <div class="project-list">
+
+        <!-- ===== GCODE ===== -->
         <div class="project">
-            <img  src="Photo/mayve3.jpg" class="project-img"/> 
-              <ul>
-               <li>  Nếu không chia động cợ bước sẽ chạy tường bước lớp  </li>
-               <li>  => Động cơ chạy giật, rung mạnh và kêu (tốc độ thấp) </li>
-               <li>Độ phân giải thấp nét vẽ sẽ không được chuẩn và mượt</li>  
-              </ul>
-          </div>
+          <h2>📐 G-code</h2>
+          <img src="Photo/mayve2.jpg" class="project-img" />
+
+          <p>G-code là ngôn ngữ điều khiển máy CNC và hệ thống tự động.</p>
+
+          <ul>
+            <li>Xác định vị trí (X, Y, Z)</li>
+            <li>Điều chỉnh tốc độ (Feedrate)</li>
+            <li>Điều khiển thiết bị (M3, M5...)</li>
+          </ul>
+
+          <p class="note">📌 Kết nối giữa phần mềm thiết kế và máy thực.</p>
         </div>
+
+        <!-- ===== STEP ===== -->
+        <div class="project">
+          <h2>⚡ Nguyên lý chia Step</h2>
+          <p>Công thức tính bước:</p>
+          <img src="Photo/mayve3.jpg" class="project-img" />
+          <ul>
+            <li>Microstepping: tương ứng từng drive điều khiển</li>
+            <p>Ví dụ: (a4988=16x, drc8825=32x)</p>
+            <li>Động cơ bước có 200 bước = vòng quay</li>
+            <li>Một bước = 1,8 độ</li>
+            <li>
+              Một puly GT2 (20 răng mỗi bước răng 2mm), một vòng quay = 40mm
+            </li>
+            <p>Lấy Microstepping: là a4988 = 16x</p>
+            <p>Ta có: (200x16)/40= 90 step/mm</p>
+            <li>Lệnh GRBL: $100=80, $101=80</li>
+            <li>Ví dụ: nếu muốn máy di chuyển 50mm</li>
+            <p>Ta có: 50 x 80 = 4000 Step</p>
+            <p>Vây động cơ cần di chuyển 4000 bước để di chuyển được 50mm</p>
+          </ul>
+
+          <p><strong>Ý nghĩa:</strong></p>
+          <p>Di chuyển đúng khoảng cách</p>
+          <p>Tăng độ chính xác</p>
+          <p><strong>⚠ Nếu sai:</strong></p>
+          <p>Vẽ sai kích thước</p>
+          <p>Rung, giật</p>
+          <p>Nét không mượt</p>
+        </div>
+      </div>
     </section>
   </body>
 </html>
