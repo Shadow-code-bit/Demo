@@ -3,174 +3,516 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Portfolio – My Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0d0f14;
+        --surface: #161a22;
+        --surface2: #1e2330;
+        --accent: #00e5a0;
+        --accent2: #00b8ff;
+        --text: #e8ecf4;
+        --muted: #7a8499;
+        --border: rgba(255,255,255,0.07);
+        --radius: 12px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* ── NAVBAR ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(13,15,20,0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .navbar {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.1rem;
+        color: var(--accent);
+        letter-spacing: -0.5px;
+      }
+
+      .menu {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        transition: color 0.2s;
+      }
+
+      .menu a:hover { color: var(--accent); }
+
+      /* ── HERO ── */
+      .hero {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 100px 24px 80px;
+        position: relative;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 40px; left: -100px;
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-tag {
+        display: inline-block;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--accent);
+        border: 1px solid rgba(0,229,160,0.3);
+        border-radius: 99px;
+        padding: 4px 14px;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 600;
+        line-height: 1.2;
+        max-width: 700px;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #e8ecf4 30%, #7a8499);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 500px;
+        margin-bottom: 36px;
+      }
+
+      /* ── BUTTONS ── */
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 8px;
+        transition: all 0.2s;
+        background: var(--accent);
+        color: #0d0f14;
+        letter-spacing: 0.2px;
+      }
+
+      .btn:hover {
+        background: #00ffb3;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(0,229,160,0.25);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .btn-outline:hover {
+        background: var(--surface2);
+        border-color: rgba(255,255,255,0.15);
+        box-shadow: none;
+      }
+
+      /* ── SECTIONS ── */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 24px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+
+      .section-header h2 {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .section-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ── PROJECT GRID ── */
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .project-list.small {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+
+      .project {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .project:hover {
+        border-color: rgba(0,229,160,0.2);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      }
+
+      .project:hover::before { opacity: 1; }
+
+      .project h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        background: var(--surface2);
+      }
+
+      .project-img.small-img {
+        height: 140px;
+      }
+
+      .project p { color: var(--muted); font-size: 0.9rem; }
+
+      .project strong { color: var(--text); }
+
+      .project ul {
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 0.875rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .project ul li { color: var(--muted); }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        border-radius: 99px;
+        background: var(--surface2);
+        color: var(--accent);
+        border: 1px solid rgba(0,229,160,0.15);
+        letter-spacing: 0.5px;
+      }
+
+      .project-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+        flex-wrap: wrap;
+      }
+
+      .project-buttons .btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+      }
+
+      /* ── DIVIDER ── */
+      .section-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        text-align: center;
+        padding: 40px 24px;
+        color: var(--muted);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .hero > * {
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero > *:nth-child(1) { animation-delay: 0.05s; }
+      .hero > *:nth-child(2) { animation-delay: 0.15s; }
+      .hero > *:nth-child(3) { animation-delay: 0.25s; }
+      .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 600px) {
+        .menu { gap: 18px; }
+        .project-list, .project-list.small {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- ===== NAVBAR ===== -->
+
+    <!-- NAVBAR -->
     <header>
       <nav class="navbar">
         <h2 class="logo">My Project</h2>
-
         <ul class="menu">
           <li><a href="#">Trang chủ</a></li>
           <li><a href="#project">Dự án</a></li>
-          <li><a href="#contact">Liên hệ</a></li>
+          <li><a href="CV.html">Thông tin CV</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="hero">
-      <h1>Tổng hợp các dự án đã nghiên cứu và làm ra</h1>
-      <p>Đam mê lập trình, Arduino và sáng tạo công nghệ</p>
-      <a href="#project" class="btn">Xem dự án</a>
+      <span class="hero-tag">Portfolio</span>
+      <h1>Tổng hợp các dự án đã nghiên cứu và thực hiện</h1>
+      <p>Đam mê lập trình, Arduino và sáng tạo công nghệ.</p>
+      <a href="#project" class="btn">Xem dự án →</a>
     </section>
 
-    <!-- ===== PROJECT CHÍNH ===== -->
+    <hr class="section-divider" />
+
+    <!-- DỰ ÁN CHÍNH -->
     <section id="project" class="container">
-      <h2>🚀 Dự án chính</h2>
+      <div class="section-header">
+        <h2>🚀 Dự án chính</h2>
+        <div class="section-line"></div>
+      </div>
 
       <div class="project-list">
-        <!-- ===== MÁY VẼ 2D ===== -->
+
+        <!-- MÁY VẼ 2D -->
         <div class="project">
           <h3>✏️ Máy vẽ 2D</h3>
-          <img src="Photo/mayve2d.jpg" class="project-img" />
-
-          <p><strong>Mô tả:</strong> Máy vẽ 2D điều khiển bằng Arduino.</p>
-
-          <p><strong>Cấu trúc:</strong> Trục X, Y + servo nâng hạ bút.</p>
-
-          <p><strong>Công nghệ:</strong></p>
-          <ul>
-            <li>GRBL</li>
-            <li>PlatformIO / Arduino IDE</li>
-            <li>LaserGRBL / LightBurn</li>
-          </ul>
-
-          <p><strong>Ngôn ngữ:</strong> C</p>
-          <p><strong>Kết quả:</strong> Vẽ hình cơ bản + PCB đơn giản</p>
-
+          <img src="Photo/mayve2d.jpg" class="project-img" alt="Máy vẽ 2D" />
+          <p><strong>Mô tả:</strong> Máy vẽ 2D điều khiển bằng Arduino với trục X, Y và servo nâng hạ bút.</p>
+          <div class="tag-row">
+            <span class="tag">GRBL</span>
+            <span class="tag">PlatformIO</span>
+            <span class="tag">LaserGRBL</span>
+            <span class="tag">C</span>
+          </div>
+          <p><strong>Kết quả:</strong> Vẽ hình cơ bản và PCB đơn giản thành công.</p>
           <div class="project-buttons">
-            <a
-              href="https://www.youtube.com/watch?v=WgsTyhX311E&t=230s"
-              target="_blank"
-              class="btn"
-              >🎬 Demo</a
-            >
-            <a href="plotter.html" target="_blank" class="btn btn-dark"
-              >💻 Chi tiết</a
-            >
+            <a href="https://www.youtube.com/watch?v=WgsTyhX311E&t=230s" target="_blank" class="btn">🎬 Demo</a>
+            <a href="plotter.html" target="_blank" class="btn btn-outline">💻 Chi tiết</a>
           </div>
         </div>
 
-        <!-- ===== COREXY ===== -->
+        <!-- MÁY VẼ COREXY -->
         <div class="project">
-          <h3>✏️ Máy vẽ COREXY</h3>
-          <img src="Photo/mayve2dv2.jpg" class="project-img" />
-
-          <p><strong>Mô tả:</strong> Máy vẽ cải tiến với cơ cấu CoreXY.</p>
-
-          <p>
-            <strong>Cấu trúc:</strong> Dây đai chéo → chuyển động mượt và chính
-            xác.
-          </p>
-
-          <p><strong>Công nghệ:</strong></p>
-          <ul>
-            <li>GRBL (CoreXY mode)</li>
-            <li>PlatformIO</li>
-            <li>LightBurn</li>
-          </ul>
-
-          <p><strong>Ngôn ngữ:</strong> C</p>
-          <p><strong>Kết quả:</strong> Vẽ chính xác hơn, ít sai lệch</p>
-
+          <h3>✏️ Máy vẽ CoreXY</h3>
+          <img src="Photo/mayve2dv2.jpg" class="project-img" alt="Máy vẽ CoreXY" />
+          <p><strong>Mô tả:</strong> Máy vẽ cải tiến dùng cơ cấu CoreXY — dây đai chéo giúp chuyển động mượt và chính xác hơn.</p>
+          <div class="tag-row">
+            <span class="tag">GRBL CoreXY</span>
+            <span class="tag">PlatformIO</span>
+            <span class="tag">LightBurn</span>
+            <span class="tag">C</span>
+          </div>
+          <p><strong>Kết quả:</strong> Vẽ chính xác hơn, ít sai lệch so với phiên bản trước.</p>
           <div class="project-buttons">
-            <a
-              href="https://www.youtube.com/watch?v=DZ5iUudF7Iw"
-              target="_blank"
-              class="btn"
-              >🎬 Demo</a
-            >
-            <a href="#" class="btn btn-dark">💻 Chi tiết</a>
+            <a href="https://www.youtube.com/watch?v=DZ5iUudF7Iw" target="_blank" class="btn">🎬 Demo</a>
+            <a href="#" class="btn btn-outline">💻 Chi tiết</a>
           </div>
         </div>
 
-        <!-- ===== MÁY IN 3D ===== -->
+        <!-- MÁY IN 3D -->
         <div class="project">
           <h3>🖨️ Máy in 3D</h3>
-          <img src="Photo/mayin3d.jpg" class="project-img" />
-
-          <p><strong>Mô tả:</strong> Máy in 3D công nghệ FDM.</p>
-
-          <p><strong>Công nghệ:</strong></p>
-          <ul>
-            <li>Marlin</li>
-            <li>PlatformIO</li>
-            <li>Ultimaker Cura</li>
-          </ul>
-
-          <p><strong>Ngôn ngữ:</strong> C</p>
-          <p><strong>Kết quả:</strong> In chi tiết kỹ thuật</p>
-
+          <img src="Photo/mayin3d.jpg" class="project-img" alt="Máy in 3D" />
+          <p><strong>Mô tả:</strong> Máy in 3D công nghệ FDM tự chế.</p>
+          <div class="tag-row">
+            <span class="tag">Marlin</span>
+            <span class="tag">PlatformIO</span>
+            <span class="tag">Ultimaker Cura</span>
+            <span class="tag">C</span>
+          </div>
+          <p><strong>Kết quả:</strong> In được các chi tiết kỹ thuật.</p>
           <div class="project-buttons">
-            <a
-              href="https://www.youtube.com/watch?v=kptchSGZKFI"
-              target="_blank"
-              class="btn"
-              >🎬 Demo</a
-            >
-            <a href="#" class="btn btn-dark">💻 Chi tiết</a>
+            <a href="https://www.youtube.com/watch?v=kptchSGZKFI" target="_blank" class="btn">🎬 Demo</a>
+            <a href="#" class="btn btn-outline">💻 Chi tiết</a>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- ===== PROJECT NHỎ ===== -->
-    <section class="container">
-      <h2>🧪 Dự án nhỏ</h2>
+    <hr class="section-divider" />
 
-      <div class="project-list small">
+    <!-- DỰ ÁN VỪA -->
+    <section class="container">
+      <div class="section-header">
+        <h2>⚙️ Dự án vừa</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-list">
+
+        <!-- CÁNH TAY ROBOT -->
         <div class="project">
-          <h3>🦾 Cánh tay robot</h3>
-          <img src="Photo/arm4dof.jpg" class="project-img small-img" />
-          <p>Cánh tay hoạt động 4 bâc tự do</p>
+          <h3>🦾 Cánh tay Robot 4-DOF</h3>
+          <img src="Photo/arm4dof.jpg" class="project-img small-img" alt="Cánh tay robot 4 bậc tự do" />
+          <p>Cánh tay robot hoạt động với 4 bậc tự do.</p>
           <ul>
-            <li>Điều khiển bằng điện thoại hoặc chiếc áp</li>
-            <li>Kết nối WiFi và trực tiếp</li>
+            <li>Điều khiển bằng điện thoại hoặc chiết áp</li>
+            <li>Kết nối WiFi và điều khiển trực tiếp</li>
           </ul>
         </div>
 
+        <!-- ROBOT ARM CAR -->
+        <div class="project">
+          <h3>🚗 Robot Arm Car</h3>
+          <img src="Photo/robotcar.jpg" class="project-img small-img" alt="Robot Arm Car" />
+          <p>Xe điều khiển từ xa tích hợp tay gắp robot.</p>
+          <ul>
+            <li>Điều khiển từ xa không dây</li>
+            <li>Tay robot nhiều bậc tự do</li>
+            <li>Ứng dụng trong học tập và nghiên cứu</li>
+          </ul>
+        </div>
+
+        <!-- ESP32 CAMERA CAR -->
         <div class="project">
           <h3>🤖 ESP32 Camera Car</h3>
-          <img src="Photo/esp32car.jpg" class="project-img small-img" />
-          <p>Xe điều khiển có camera truyền hình ảnh qua WiFi.</p>
+          <img src="Photo/esp32car.jpg" class="project-img small-img" alt="ESP32 Camera Car" />
+          <p>Xe điều khiển có camera truyền hình ảnh qua WiFi theo thời gian thực.</p>
           <ul>
-            <li>Điều khiển bằng điện thoại</li>
+            <li>Điều khiển bằng điện thoại qua WiFi</li>
             <li>Truyền video realtime</li>
-            <li>Kết nối WiFi</li>
           </ul>
         </div>
+
+        <!-- ĐO ĐỘ ẨM ĐẤT -->
+        <div class="project">
+          <h3>🌱 Kiểm soát độ ẩm đất</h3>
+          <img src="Photo/DAD.jpg" class="project-img small-img" alt="Thiết bị đo và kiểm soát độ ẩm đất" />
+          <p>Thiết bị đo và kiểm soát lượng nước tưới cây tự động.</p>
+          <ul>
+            <li>Tự động điều chỉnh nguồn nước theo độ ẩm đất</li>
+            <li>Cài đặt ngưỡng độ ẩm qua nút nhấn và màn hình</li>
+            <li>So sánh độ ẩm đo được với giá trị cài đặt</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- DỰ ÁN NHỎ -->
+    <section class="container">
+      <div class="section-header">
+        <h2>🧪 Dự án nhỏ</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-list small">
 
         <div class="project">
           <h3>💡 LED Cube</h3>
-          <img src="Photo/ledcube.jpg" class="project-img small-img" />
-          <p>Mạch LED 3D hiển thị hiệu ứng ánh sáng.</p>
+          <img src="Photo/ledcube.jpg" class="project-img small-img" alt="LED Cube 3D" />
+          <p>Mạch LED 3D hiển thị các hiệu ứng ánh sáng động.</p>
         </div>
 
         <div class="project">
-          <h3>Nguồn DC tinh chỉnh</h3>
-          <img src="Photo/nguonDC.jpg" class="project-img small-img" />
+          <h3>🔋 Nguồn DC tinh chỉnh</h3>
+          <img src="Photo/nguonDC.jpg" class="project-img small-img" alt="Nguồn DC tinh chỉnh" />
+          <p>Bộ nguồn DC có thể điều chỉnh điện áp linh hoạt.</p>
           <ul>
-            <strong>Cung cấp nguồn DC:</strong>
-            <li>Điều chỉnh điện áp phù hợp</li>
-            <li>Hiển thị điện áp</li>
-            <li>Hiển thị đòng điện thiết bị sử dụng</li>
+            <li>Điều chỉnh điện áp đầu ra theo nhu cầu</li>
+            <li>Hiển thị điện áp và dòng điện tiêu thụ</li>
           </ul>
         </div>
+
       </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2025 My Project · Được xây dựng với ❤️ và Arduino</p>
+    </footer>
+
   </body>
 </html>
