@@ -272,38 +272,28 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.skill-item {
+.skill-list {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
   color: var(--text);
+  background: var(--surface2);
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
 }
 
-.skill-item span { flex-shrink: 0; font-size: 13px; }
-
-.bar {
-  flex: 1;
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.bar-fill {
-  height: 100%;
-  width: var(--w, 0%);
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  border-radius: 2px;
-  animation: barGrow 1.2s ease forwards;
-  transform-origin: left;
-}
-
-@keyframes barGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0,229,160,0.06);
 }
 
 /* ===== TAGS (Tools) ===== */
