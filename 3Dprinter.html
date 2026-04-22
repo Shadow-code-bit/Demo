@@ -25,8 +25,8 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <span class="hero-tag">Dự án chi tiết</span>
-      <h1>Máy vẽ kỹ thuật</h1>
-      <h2>Plotter 2D sử dụng Arduino</h2>
+      <h1>Máy in 3D kỹ thuật</h1>
+      <h2>Printer 3D sử dụng Arduino</h2>
     </section>
 
     <!-- ===== 1. GIỚI THIỆU ===== -->
@@ -34,7 +34,7 @@
       <h2 class="section-title">1. Giới thiệu đề tài</h2>
       <div class="text-card">
         <img
-          src="Photo/mayve2d.jpg"
+          src="Photo/mayin3d.jpg"
           class="project-img"
           alt="Sơ đồ kết nối dây mạch"
         />
@@ -57,9 +57,9 @@
       <h2 class="section-title">2. Mục tiêu đề tài</h2>
       <div class="text-card">
         <ul>
-          <li>Xây dựng hệ thống điều khiển chuyển động theo trục X-Y</li>
-          <li>Ứng dụng G-code để điều khiển máy</li>
-          <li>Đạt độ chính xác cao trong vẽ hình và PCB</li>
+          <li>Xây dựng hệ thống điều khiển chuyển động theo trục X-Y-Z</li>
+          <li>Ứng dụng G-code để điều khiển máy in</li>
+          <li>Đạt độ chính xác cao trong in các mẫu chi tiết</li>
           <li>Hiểu rõ nguyên lý điều khiển động cơ bước</li>
         </ul>
       </div>
@@ -75,12 +75,12 @@
         </p>
         <ul>
           <li>
-            <strong>Phần cơ khí:</strong> Khung máy, ray trượt, dây đai, pulley
+            <strong>Phần cơ khí:</strong> Khung máy, trục vitme T8, ray trượt, dây đai, pulley
           </li>
           <li>
-            <strong>Phần điện tử:</strong> Arduino, driver, động cơ bước, servo
+            <strong>Phần điện tử:</strong> Arduino, driver, động cơ bước, bộ phận gia nhiệt đầu in
           </li>
-          <li><strong>Phần mềm:</strong> GRBL firmware, phần mềm tạo G-code</li>
+          <li><strong>Phần mềm:</strong>Marlin firmware, phần mềm cắt lớp tạo G-code</li>
         </ul>
       </div>
     </section>
@@ -92,7 +92,7 @@
         <div class="project">
           <h3>⚙️ Hệ trục tọa độ</h3>
           <img
-            src="Photo/mayve1.jpg"
+            src="Photo/in3d.jpg"
             class="project-img"
             alt="Nguyên lý hoạt động máy vẽ"
           />
@@ -101,22 +101,25 @@
           </p>
           <ul>
             <li>
-              <strong>Trục X, Y:</strong> Điều khiển chuyển động ngang và dọc
-              bằng động cơ bước. Khi nhận lệnh G-code, động cơ quay một số bước
+              <strong>Trục X:</strong> Điều khiển chuyển động ngang đầu in bằng động cơ bước. Khi nhận lệnh G-code, động cơ quay một số bước
               nhất định để đạt vị trí mong muốn.
             </li>
             <li>
-              <strong>Trục Z:</strong> Servo SG90 nâng/hạ bút. Khi vẽ, bút hạ
-              xuống; khi di chuyển, bút nâng lên.
+              <strong>Trục Y:</strong> Điều khiển chuyển động dọc bàn in bằng động cơ bước. Khi nhận lệnh G-code, động cơ quay một số bước
+              nhất định để đạt vị trí mong muốn.
             </li>
             <li>
-              <strong>Bộ điều khiển:</strong> Arduino nhận dữ liệu G-code và
+              <strong>Trục Z:</strong> Di chuyển đầu in lên xuống bằng động cơ bước. Khi nhận lệnh G-code, động cơ quay một số bước
+              nhất định để đạt vị trí mong muốn.
+            </li>
+            <li>
+              <strong>Bộ điều khiển:</strong> Arduino mega nhận dữ liệu G-code và
               chuyển đổi thành xung điều khiển driver.
             </li>
           </ul>
           <p class="note">
-            📌 Ví dụ: Lệnh <strong>G1 X50 Y50</strong> → đầu vẽ di chuyển đến vị
-            trí (50, 50).
+            📌 Ví dụ: Lệnh <strong>G1 X50 Y50 Z50</strong> → đầu vẽ di chuyển đến vị
+            trí (50, 50, 50).
           </p>
         </div>
 
@@ -190,18 +193,18 @@
         <div class="project">
           <h3>🔌 Sơ đồ đi dây mạch</h3>
           <img
-            src="Photo/mayve4.jpg"
+            src="Photo/3d1.jpg"
             class="project-img"
             alt="Sơ đồ kết nối dây mạch"
           />
           <ul>
-            <li><strong>Mạch Arduino UNO</strong> – điều khiển trung tâm</li>
-            <li><strong>Mạch CNC Shield v3</strong></li>
+            <li><strong>Mạch Arduino Mega</strong> – điều khiển trung tâm</li>
+            <li><strong>Mạch RAMPS 1.4</strong></li>
             <li><strong>Driver A4988 hoặc DRV8825</strong></li>
-            <li><strong>2 Động cơ stepper NEMA 17</strong></li>
-            <li><strong>Động cơ servo SG90</strong></li>
-            <li><strong>2 Công tắc hành trình</strong></li>
-            <li><strong>Nguồn 12V – 3A DC</strong></li>
+            <li><strong>5 Động cơ stepper NEMA 17</strong></li>
+            <li><strong>Bộ phận gia nhiệt đầu in</strong></li>
+            <li><strong>3 Công tắc hành trình</strong></li>
+            <li><strong>Nguồn 12V – 30A DC</strong></li>
           </ul>
         </div>
       </div>
@@ -212,11 +215,12 @@
       <h2 class="section-title">6. Phần cứng sử dụng</h2>
       <div class="text-card">
         <ul>
-          <li>Arduino Uno R3 – điều khiển trung tâm</li>
+          <li>Arduino Mega – điều khiển trung tâm</li>
           <li>Driver A4988 – điều khiển động cơ bước</li>
           <li>Động cơ bước NEMA 17</li>
           <li>Servo SG90</li>
           <li>Dây đai GT2 + pulley</li>
+          <li>Trục vitme T8</li>
           <li>Khung máy in 3D</li>
         </ul>
       </div>
@@ -227,9 +231,9 @@
       <h2 class="section-title">7. Phần mềm sử dụng</h2>
       <div class="text-card">
         <ul>
-          <li>GRBL Firmware</li>
+          <li>Marlin Firmware</li>
           <li>PlatformIO / Arduino IDE</li>
-          <li>LaserGRBL / LightBurn</li>
+          <li>Cura</li>
         </ul>
       </div>
     </section>
@@ -239,25 +243,32 @@
       <h2 class="section-title">8. Kết quả đạt được</h2>
       <div class="text-card">
         <ul>
-          <li>✅ Vẽ được các tranh nét cơ bản</li>
-          <li>✅ Vẽ được hình học cơ bản</li>
-          <li>✅ Vẽ PCB đơn giản</li>
+          <li>✅ In các vật độ chi tiết trung bình</li>
+          <li>✅ In được chi tiết cơ khí cơ bản</li>
+          <li>✅ In ở mức độ vừa các lớp in vẫn chưa đạt hoàng hảo</li>
           <li>✅ Hoạt động ổn định</li>
-          <li>✅ Độ sai số nhỏ (~0.4mm) "tùy thuộc vào đầu bút vẽ"</li>
+          <li>✅ Độ sai số nhỏ (~0.4mm)</li>
         </ul>
       </div>
         <div class="project-list small">
         <div class="project">
           <h3>Vẽ mạch PCB</h3>
           <img
-            src="Photo/mayve5.jpg"
+            src="Photo/3dvd.jpg"
             class="project-img"
           />
            </div>
             <div class="project">
           <h3>Vẽ tranh</h3>
-      <img
-            src="Photo/mayve6.jpg"
+          <img
+            src="Photo/3dvd1.jpg"
+            class="project-img"
+          />
+        </div>
+         <div class="project">
+          <h3>Vẽ tranh</h3>
+          <img
+            src="Photo/3dvd2.jpg"
             class="project-img"
           />
         </div>
@@ -272,7 +283,7 @@
           <ul>
             <li>Máy bị lệch tọa độ</li>
             <li>Động cơ rung</li>
-            <li>Nét vẽ không mượt</li>
+            <li>Nét in không mượt</li>
             <li>vật liệu vẽ chư được cố định chắc chắn.</li>
           </ul>
         </div>
@@ -296,11 +307,9 @@
         <ul>
           <li>Thêm điều khiển WiFi (ESP32)</li>
           <li>Tăng độ chính xác cơ khí</li>
-          <li>Ứng dụng vào sản xuất PCB thực tế</li>
-          <li>Cải tiến lưu file đọc vẽ qua thẻ nhớ SD.</li>
+          <li>Ứng dụng vào in các chi tiết thực tế</li>
           <li>
-            Cải tiến độ chính sác, dùng làm máy vẽ các bản vẽ chi tiết cơ khi
-            thực
+            Cải tiến độ chính sác, dùng làm máy in ra nét hơn in các đồ dùng trưng bày
           </li>
         </ul>
       </div>
