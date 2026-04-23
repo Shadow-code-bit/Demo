@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máy vẽ CoreXY – Chi tiết</title>
+    <link rel="stylesheet" href="plotter.css" />
+  </head>
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <header>
+      <nav class="navbar">
+        <h2 class="logo">My Project</h2>
+        <ul class="menu">
+          <li><a href="index.html">← Trang chủ</a></li>
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#nguyen-ly">Nguyên lý</a></li>
+          <li><a href="#phan-cung">Phần cứng</a></li>
+          <li><a href="#ket-qua">Kết quả</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <span class="hero-tag">Dự án chi tiết</span>
+      <h1>Máy vẽ CoreXY</h1>
+      <h2>Plotter 2D cơ cấu CoreXY sử dụng Arduino</h2>
+    </section>
+
+    <!-- ===== 1. GIỚI THIỆU ===== -->
+    <section id="gioi-thieu" class="container">
+      <h2 class="section-title">1. Giới thiệu đề tài</h2>
+      <div class="text-card">
+        <img
+          src="Photo/mayve2dv2.jpg"
+          class="project-img"
+          alt="Máy vẽ CoreXY"
+        />
+        <p>
+          Trong thời đại tự động hóa, các hệ thống điều khiển bằng vi điều khiển
+          ngày càng được ứng dụng rộng rãi. Máy vẽ CoreXY là phiên bản cải tiến
+          của máy vẽ 2D truyền thống, sử dụng cơ cấu dây đai chéo giúp chuyển
+          động nhanh hơn, mượt hơn và chính xác hơn đáng kể.
+        </p>
+        <p>
+          Đề tài này tập trung thiết kế và chế tạo máy vẽ CoreXY sử dụng Arduino
+          với firmware GRBL (chế độ CoreXY), có khả năng đọc dữ liệu G-code và
+          thực hiện vẽ chính xác trên mặt phẳng với ít sai lệch hơn so với cơ
+          cấu truyền thống.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 2. MỤC TIÊU ===== -->
+    <section class="container">
+      <h2 class="section-title">2. Mục tiêu đề tài</h2>
+      <div class="text-card">
+        <ul>
+          <li>Xây dựng hệ thống điều khiển chuyển động CoreXY theo trục X-Y</li>
+          <li>Ứng dụng G-code kết hợp GRBL CoreXY mode để điều khiển máy</li>
+          <li>Đạt độ chính xác cao hơn so với cơ cấu Cartesian truyền thống</li>
+          <li>Hiểu rõ nguyên lý hoạt động của cơ cấu dây đai chéo CoreXY</li>
+          <li>Giảm thiểu rung lắc và sai số trong quá trình vẽ</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 3. TỔNG QUAN ===== -->
+    <section class="container">
+      <h2 class="section-title">3. Tổng quan hệ thống</h2>
+      <div class="text-card">
+        <p>
+          Hệ thống máy vẽ CoreXY bao gồm ba phần chính: cơ khí, điện tử và phần
+          mềm điều khiển. Điểm khác biệt cốt lõi so với máy vẽ thông thường là
+          cả hai động cơ đều được đặt cố định trên khung, chuyển động của đầu vẽ
+          là kết quả tổng hợp từ hai động cơ cùng hoạt động.
+        </p>
+        <ul>
+          <li>
+            <strong>Phần cơ khí:</strong> Khung cứng, ray trượt tuyến tính, dây
+            đai GT2 bố trí chéo kiểu CoreXY, pulley và idler
+          </li>
+          <li>
+            <strong>Phần điện tử:</strong> Arduino, driver A4988/DRV8825, 2 động
+            cơ bước NEMA 17 đặt cố định, servo SG90
+          </li>
+          <li>
+            <strong>Phần mềm:</strong> GRBL firmware (CoreXY mode), LightBurn /
+            LaserGRBL, PlatformIO
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 4. NGUYÊN LÝ HOẠT ĐỘNG ===== -->
+    <section id="nguyen-ly" class="container">
+      <h2 class="section-title">4. Nguyên lý hoạt động CoreXY</h2>
+      <div class="project-list small">
+        <div class="project">
+          <h3>⚙️ Cơ cấu dây đai chéo CoreXY</h3>
+          <img
+            src="Photo/mayve1.jpg"
+            class="project-img"
+            alt="Nguyên lý CoreXY"
+          />
+          <p>
+            Khác với máy Cartesian thông thường (mỗi động cơ điều khiển một trục
+            riêng), CoreXY sử dụng hai động cơ phối hợp cùng lúc để tạo chuyển
+            động trên cả hai trục.
+          </p>
+          <ul>
+            <li>
+              <strong>Di chuyển trục X:</strong> Động cơ A và B quay cùng chiều
+              → đầu vẽ dịch sang trái hoặc phải.
+            </li>
+            <li>
+              <strong>Di chuyển trục Y:</strong> Động cơ A và B quay ngược chiều
+              nhau → đầu vẽ dịch lên hoặc xuống.
+            </li>
+            <li>
+              <strong>Di chuyển chéo:</strong> Một động cơ quay, động cơ kia
+              đứng yên → đầu vẽ di chuyển theo đường chéo 45°.
+            </li>
+            <li>
+              <strong>Trục Z:</strong> Servo SG90 nâng/hạ bút. Khi vẽ, bút hạ
+              xuống; khi di chuyển không vẽ, bút nâng lên.
+            </li>
+          </ul>
+          <p class="note">
+            📌 Ưu điểm: Cả hai động cơ đều đặt cố định → khối lượng đầu vẽ nhẹ
+            hơn → tốc độ cao hơn, rung ít hơn, chính xác hơn.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>📐 G-code và điều khiển GRBL CoreXY</h3>
+          <img src="Photo/mayve2.jpg" class="project-img" alt="G-code CoreXY" />
+          <p>
+            GRBL được kích hoạt chế độ CoreXY bằng lệnh <strong>$32=1</strong>
+            (hoặc cấu hình trong firmware). Sau đó G-code hoạt động bình thường
+            nhưng GRBL tự động phân phối lệnh cho 2 động cơ phối hợp.
+          </p>
+          <ul>
+            <li><strong>G0:</strong> Di chuyển nhanh không vẽ</li>
+            <li><strong>G1:</strong> Di chuyển có vẽ theo đường thẳng</li>
+            <li><strong>G2 / G3:</strong> Di chuyển theo cung tròn</li>
+            <li><strong>F:</strong> Tốc độ di chuyển (Feedrate)</li>
+            <li><strong>M3 / M5:</strong> Bật / tắt servo bút</li>
+          </ul>
+          <p class="note">
+            📌 Lệnh <strong>G1 X50 Y50 F800</strong> → đầu vẽ di chuyển đến (50,
+            50) với tốc độ 800mm/phút — cả hai động cơ phối hợp tự động.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. TÍNH TOÁN & SƠ ĐỒ ===== -->
+    <section class="container">
+      <h2 class="section-title">5. Tính toán và sơ đồ kết nối</h2>
+      <div class="project-list small">
+        <div class="project">
+          <h3>⚡ Tính Steps/mm cho CoreXY</h3>
+          <img
+            src="Photo/mayve3.jpg"
+            class="project-img"
+            alt="Tính toán steps/mm CoreXY"
+          />
+          <p>
+            Công thức tính Steps/mm của CoreXY giống máy Cartesian, nhưng cần
+            lưu ý rằng trong CoreXY, chuyển động thực tế của đầu vẽ là kết quả
+            tổng hợp của hai động cơ.
+          </p>
+          <p>
+            <strong>Công thức:</strong> Steps/mm = (Steps motor × Microstep) /
+            Quãng đường mỗi vòng
+          </p>
+          <ul>
+            <li>Microstepping: A4988 = 16x, DRV8825 = 32x</li>
+            <li>Động cơ bước NEMA 17: 200 bước/vòng (1 bước = 1,8°)</li>
+            <li>Pulley GT2 (20 răng × 2mm): một vòng = 40mm</li>
+          </ul>
+          <p class="note">
+            📌 Ví dụ với A4988: (200 × 16) / 40 = <strong>80 steps/mm</strong>
+          </p>
+          <ul>
+            <li>
+              Cài vào GRBL: <strong>$100=80</strong> (motor A) và
+              <strong>$101=80</strong> (motor B)
+            </li>
+            <li>
+              Di chuyển 50mm theo X → cả 2 motor cùng quay → mỗi motor thực hiện
+              <strong>4000 bước</strong>
+            </li>
+          </ul>
+          <p class="note">
+            ⚠ Sai Steps/mm trong CoreXY sẽ làm lệch cả X lẫn Y vì hai trục phụ
+            thuộc nhau — cần hiệu chỉnh chính xác hơn so với Cartesian.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>🔌 Sơ đồ đi dây mạch CoreXY</h3>
+          <img
+            src="Photo/mayve4.jpg"
+            class="project-img"
+            alt="Sơ đồ kết nối dây CoreXY"
+          />
+          <ul>
+            <li><strong>Mạch Arduino UNO</strong> – điều khiển trung tâm</li>
+            <li><strong>Mạch CNC Shield v3</strong> – giao tiếp driver</li>
+            <li><strong>Driver A4988 hoặc DRV8825</strong> × 2</li>
+            <li>
+              <strong>2 Động cơ stepper NEMA 17</strong> – đặt cố định trên
+              khung, không di chuyển cùng đầu vẽ
+            </li>
+            <li><strong>Động cơ servo SG90</strong> – nâng hạ bút</li>
+            <li>
+              <strong>2 Công tắc hành trình (endstop)</strong> – xác định điểm
+              gốc (home)
+            </li>
+            <li><strong>Nguồn 12V – 3A DC</strong></li>
+          </ul>
+          <p class="note">
+            📌 Lưu ý: Trong CoreXY, chiều quay của một trong hai động cơ có thể
+            cần đảo ngược tùy theo cách bố trí dây đai — kiểm tra bằng lệnh
+            <strong>$3</strong> trong GRBL.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. PHẦN CỨNG ===== -->
+    <section id="phan-cung" class="container">
+      <h2 class="section-title">6. Phần cứng sử dụng</h2>
+      <div class="text-card">
+        <ul>
+          <li>Arduino Uno R3 – điều khiển trung tâm</li>
+          <li>CNC Shield v3 – mở rộng chân điều khiển</li>
+          <li>Driver A4988 hoặc DRV8825 × 2</li>
+          <li>2 Động cơ bước NEMA 17 – đặt cố định trên khung CoreXY</li>
+          <li>Servo SG90 – nâng hạ bút</li>
+          <li>Dây đai GT2 bố trí chéo + pulley + idler bearing</li>
+          <li>Ray trượt tuyến tính (linear rail hoặc thanh trơn + vòng bi)</li>
+          <li>Khung nhôm định hình hoặc khung in 3D</li>
+          <li>2 Công tắc hành trình (endstop)</li>
+          <li>Nguồn 12V – 3A DC</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 7. PHẦN MỀM ===== -->
+    <section class="container">
+      <h2 class="section-title">7. Phần mềm sử dụng</h2>
+      <div class="text-card">
+        <ul>
+          <li>GRBL Firmware (bật CoreXY mode: <strong>$32=1</strong>)</li>
+          <li>PlatformIO / Arduino IDE – nạp firmware</li>
+          <li>LightBurn – tạo và gửi G-code</li>
+          <li>LaserGRBL – tạo và gửi G-code (thay thế)</li>
+          <li>Inkscape + plugin G-code – thiết kế và xuất file vẽ</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 8. KẾT QUẢ ===== -->
+    <section id="ket-qua" class="container">
+      <h2 class="section-title">8. Kết quả đạt được</h2>
+      <div class="text-card">
+        <ul>
+          <li>✅ Vẽ được các tranh nét cơ bản</li>
+          <li>
+            ✅ Vẽ được hình học cơ bản với độ chính xác cao hơn phiên bản cũ
+          </li>
+          <li>✅ Vẽ PCB đơn giản</li>
+          <li>✅ Chuyển động mượt hơn, ít rung hơn so với Cartesian</li>
+          <li>✅ Hoạt động ổn định ở tốc độ cao hơn</li>
+          <li>✅ Độ sai số nhỏ (~0.4mm, tùy thuộc vào đầu bút vẽ)</li>
+        </ul>
+      </div>
+      <div class="project-list small">
+        <div class="project">
+          <h3>Vẽ mạch PCB</h3>
+          <img
+            src="Photo/mayve7.jpg"
+            class="project-img"
+            alt="Kết quả vẽ PCB"
+          />
+        </div>
+        <div class="project">
+          <h3>Vẽ tranh</h3>
+          <img
+            src="Photo/mayve8.jpg"
+            class="project-img"
+            alt="Kết quả vẽ tranh"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. KHÓ KHĂN & GIẢI PHÁP ===== -->
+    <section class="container">
+      <h2 class="section-title">9. Khó khăn và giải pháp</h2>
+      <div class="two-col">
+        <div class="text-card">
+          <h3 class="card-sub">⚠ Khó khăn</h3>
+          <ul>
+            <li>Căng dây đai không đều làm lệch đầu vẽ</li>
+            <li>Chiều quay động cơ không đúng do bố trí dây đai chéo</li>
+            <li>Rung ở tốc độ cao do dây đai chùng</li>
+            <li>Nét vẽ không mượt khi tăng tốc/giảm tốc đột ngột</li>
+            <li>Vật liệu vẽ chưa được cố định chắc chắn</li>
+          </ul>
+        </div>
+
+        <div class="text-card">
+          <h3 class="card-sub">✅ Giải pháp</h3>
+          <ul>
+            <li>Căng dây đai đều hai bên, dùng idler điều chỉnh lực căng</li>
+            <li>Đảo chiều motor bằng lệnh GRBL <strong>$3</strong></li>
+            <li>Tăng lực căng dây đai và kiểm tra pulley</li>
+            <li>Giảm gia tốc trong GRBL (<strong>$120, $121</strong>)</li>
+            <li>Thiết kế kẹp cố định hoặc dùng băng dính cho bàn vẽ</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. HƯỚNG PHÁT TRIỂN ===== -->
+    <section class="container">
+      <h2 class="section-title">10. Hướng phát triển</h2>
+      <div class="text-card">
+        <ul>
+          <li>Thêm điều khiển WiFi qua ESP32 để gửi file không dây</li>
+          <li>
+            Tăng độ chính xác cơ khí bằng ray trượt tuyến tính chất lượng cao
+          </li>
+          <li>Ứng dụng vào sản xuất PCB thực tế</li>
+          <li>Cải tiến đọc file G-code trực tiếp qua thẻ nhớ SD</li>
+          <li>
+            Nâng cấp lên driver im lặng (TMC2208/TMC2209) để giảm tiếng ồn
+          </li>
+          <li>Mở rộng vùng vẽ và tăng tốc độ tối đa của máy</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <p>© 2025 My Project · Máy vẽ CoreXY – Plotter Arduino</p>
+    </footer>
+  </body>
+</html>
